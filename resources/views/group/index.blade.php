@@ -20,9 +20,10 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                        <td>名前</td>
+                @foreach($groups as $group)
+                  <tr>
+                    <th scope="row">{{ $group->id }}</th>
+                        <td>{{ $group->name }}</td>
                         <td>
                           <div>
                             <a href="#">チャット画面へ</a>
@@ -35,6 +36,7 @@
                           </div>
                         </td>
                     </tr>
+                @endforeach
               </tbody>
             </table>
         </div>
