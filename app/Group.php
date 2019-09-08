@@ -13,8 +13,14 @@ class Group extends Model
         );
         
     //Useモデルに関連付け
-    public function user()
+    public function users()
     {
         return $this->belongsToMany('App\User');
+    }
+    
+    //Commentモデルに関連付け
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
     }
 }
