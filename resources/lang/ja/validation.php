@@ -146,7 +146,8 @@ return [
     */
 
     'attributes' => [
-        'name' => '名前'
+        'name' => '名前',
+        'comment' => 'コメント'
     ],
 
 ];

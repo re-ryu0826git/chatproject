@@ -49,16 +49,26 @@
             </div>
             
             <div class="card-footer">
-                <div class="row">
-                    <div class="col-sm-10 mt-1">
-                        <div class="<form-group">
-                          <input type="text" class="form-control">
+                <form action="{{ action('CommentController@create') }}" method="post" enctype="multipart/form-data">
+                    @if (count($errors) > 0)
+                        <ul>
+                            @foreach($errors->all() as $e)
+                                <li>{{ $e }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="form-group">
+                              <input type="text" class="form-control" name="comment">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            {{ csrf_field() }}
+                            <input type="submit" class="btn btn-info" value="Send">
                         </div>
                     </div>
-                    <div class="col-sm-2 mt-1">
-                        <button type="button" class="btn btn-info">Send</button>
-                    </div>
-                </div>
+                </form>
             </div>
             
         </div>

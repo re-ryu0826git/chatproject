@@ -20,4 +20,5 @@ Route::get('/','GroupController@index')->middleware('auth');
 Route::get('group/create', 'GroupController@add')->middleware('auth');
 Route::post('group/create', 'GroupController@create')->middleware('auth');
 Route::get('comment/show', 'CommentController@show')->middleware('auth');
+Route::post('comment/show', 'CommentController@create')->middleware('auth');
 // Route::get('/home', 'HomeController@index')->name('home');
