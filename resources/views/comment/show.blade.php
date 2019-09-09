@@ -36,7 +36,7 @@
                  <figure class="balloon-image-right">
                    <i class="fas fa-user fa-3x fa-border"></i>
                  <figcaption class="balloon-image-description">
-                     にゃー
+                     {{ Auth::user()->name }}
                  </figcaption>
                  </figure>
                  <div class="balloon-text-left">
@@ -65,6 +65,8 @@
                         </div>
                         <div class="col-md-2">
                             {{ csrf_field() }}
+                            <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                            <input type="hidden" name="group_id" value="1">
                             <input type="submit" class="btn btn-info" value="Send">
                         </div>
                     </div>
