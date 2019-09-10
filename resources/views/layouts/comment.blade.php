@@ -41,10 +41,10 @@
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav mr-auto">　
                   <li class="nav-item">
-                    <a class="nav-link" href="#">チャット一覧</a>
+                    <a class="nav-link" href="{{ action('GroupController@index') }}">チャット一覧</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">チャットグループ作成</a>
+                    <a class="nav-link" href="{{ action('GroupController@add') }}">チャットグループ作成</a>
                   </li>
                 </ul>
 
