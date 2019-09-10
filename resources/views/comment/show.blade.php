@@ -16,36 +16,40 @@
             
             <!-- chatbody -->
             <div class="card-body chatbody">
-                <!--左からの吹き出し-->
-                <div class="balloon think">
-                 <figure class="balloon-image-left">
-                   <i class="fas fa-user fa-3x fa-border"></i>
-                 <figcaption class="balloon-image-description">
-                     にゃー
-                 </figcaption>
-                 </figure>
-                 <div class="balloon-text-right">
-                   <p>
-                     にゃー！にゃー！にゃー！にゃー！にゃー！にゃー！にゃー！にゃー！
-                   </p>
-                 </div>
-                </div>
-            
-                <!--右からの吹き出し-->
-                <div class="balloon think">
-                 <figure class="balloon-image-right">
-                   <i class="fas fa-user fa-3x fa-border"></i>
-                 <figcaption class="balloon-image-description">
-                     {{ Auth::user()->name }}
-                 </figcaption>
-                 </figure>
-                 <div class="balloon-text-left">
-                   <p>
-                     にゃー！にゃー！にゃー！にゃー！にゃー！にゃー！にゃー！にゃー！
-                   </p>
-                 </div>
-               </div>
-            
+                @foreach($receiveComments as $receiveComment)
+                    @if ($user != Auth::user()->name)
+                        <!--左からの吹き出し-->
+                        <div class="balloon think">
+                         <figure class="balloon-image-left">
+                           <i class="fas fa-user fa-3x fa-border"></i>
+                         <figcaption class="balloon-image-description">
+                             <!--他のユーザ名前にする必要がある-->
+                             にゃー
+                         </figcaption>
+                         </figure>
+                         <div class="balloon-text-right">
+                           <p>
+                             { $receiveComment->comment }}
+                           </p>
+                         </div>
+                        </div>
+                    @else
+                        <!--右からの吹き出し-->
+                        <div class="balloon think">
+                         <figure class="balloon-image-right">
+                           <i class="fas fa-user fa-3x fa-border"></i>
+                         <figcaption class="balloon-image-description">
+                             {{ Auth::user()->name }}
+                         </figcaption>
+                         </figure>
+                         <div class="balloon-text-left">
+                           <p>
+                            {{ $receiveComment->comment }}
+                           </p>
+                         </div>
+                       </div>
+                    @endif
+                @endforeach
             </div>
             
             <div class="card-footer">

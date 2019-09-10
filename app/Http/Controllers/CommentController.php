@@ -12,7 +12,11 @@ class CommentController extends Controller
 {
     public function show()
     {
-        return view('comment.show');    
+        
+        $receiveComments = Comment::all();
+        $user = Auth::user()->name;
+        
+        return view('comment.show', ['receiveComments' => $receiveComments, 'user' => $user] );    
     }
     
     public function create(Request $request)
