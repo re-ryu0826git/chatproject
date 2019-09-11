@@ -26,7 +26,7 @@
                         <td>{{ $group->name }}</td>
                         <td>
                           <div>
-                            <a href="{{ action('CommentController@show', ['id' => $group->id]) }}">チャット画面へ</a>
+                            <a href="{{ url('comments/'.$group->id) }}">チャット画面へ</a>
                           </div>
                         </td>
                         <td>2019/08/09 12:49</td>

@@ -1,17 +1,15 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Comment;
 use App\Group;
 use App\User;
-
 class CommentController extends Controller
 {
-    public function show(Request $request)
+    public function show(Request $request, $id)
     {   
+        \Debugbar::info($request);
         $receiveComments = Comment::all();
         $user = Auth::user()->name;
         
@@ -39,5 +37,4 @@ class CommentController extends Controller
         return redirect('comment/show');
     }
     
-
 }
