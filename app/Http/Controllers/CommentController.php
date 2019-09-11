@@ -10,9 +10,8 @@ use App\User;
 
 class CommentController extends Controller
 {
-    public function show()
-    {
-        
+    public function show(Request $request)
+    {   
         $receiveComments = Comment::all();
         $user = Auth::user()->name;
         
@@ -31,7 +30,6 @@ class CommentController extends Controller
         
         unset($form['_token']);
         
-        // 中間テーブルへ保存
         
         
         // データベースに保存
@@ -40,4 +38,6 @@ class CommentController extends Controller
       
         return redirect('comment/show');
     }
+    
+
 }
