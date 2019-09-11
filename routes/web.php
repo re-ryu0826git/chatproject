@@ -16,18 +16,18 @@
 // });
 
 Auth::routes();
+Route::resource('groups', 'GroupController')->middleware('auth');
 Route::get('/','GroupController@index')->middleware('auth');
-Route::get('group/create', 'GroupController@add')->middleware('auth');
-Route::post('group/create', 'GroupController@create')->middleware('auth');
+Route::get('groups/create', 'GroupController@add')->middleware('auth');
+Route::post('groups/create', 'GroupController@create')->middleware('auth');
+Route::resource('comments', 'CommentController')->middleware('auth');
+
+
+
 // Route::get('comment/show/{id}', ['as' => 'comment.show', 'uses' => 'CommentController@show'])->middleware('auth');
 // Route::get('comment/show/{id}', 'CommentController@show')->middleware('auth');
 // Route::post('comment/{id}', 'CommentController@create')->middleware('auth');
 // Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('comments', 'CommentController');
-
-
-
-
 
 
 // Route::get('comment/show/{id}', 'CommentController@show')
