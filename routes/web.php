@@ -16,11 +16,15 @@
 // });
 
 Auth::routes();
-Route::resource('groups', 'GroupController')->middleware('auth');
+Route::resource('groups.comments', 'CommentController')->middleware('auth');
+// Route::resource('groups', 'GroupController')->middleware('auth');
 Route::get('/','GroupController@index')->middleware('auth');
 Route::get('groups/create', 'GroupController@add')->middleware('auth');
 Route::post('groups/create', 'GroupController@create')->middleware('auth');
-Route::resource('comments', 'CommentController')->middleware('auth');
+
+
+// Route::resource('groups.comments', 'CommentController')->middleware('auth');
+// Route::resource('comments', 'CommentController')->middleware('auth');
 
 
 

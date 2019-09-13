@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Group;
+use App\Comment;
+
 
 class GroupController extends Controller
 {
@@ -33,9 +36,18 @@ class GroupController extends Controller
     //データベースへ保存
     $group->fill($form)->save();
     
-    return redirect('group/create');
+    return redirect('groups/create');
   }
   
+
+  public function show(Request $request, $id)
+  {   
+      \Debugbar::info($request);
+      $receiveComments = Comment::all();
+      $user = Auth::user()->name;
+      
+      return view('group.show', ['receiveComments' => $receiveComments, 'user' => $user] );    
+  }
 
 
 }

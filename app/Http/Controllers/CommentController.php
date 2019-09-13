@@ -5,17 +5,21 @@ use Illuminate\Support\Facades\Auth;
 use App\Comment;
 use App\Group;
 use App\User;
+
 class CommentController extends Controller
 {
-    public function show(Request $request, $id)
-    {   
-        \Debugbar::info($request);
-        $receiveComments = Comment::all();
-        $user = Auth::user()->name;
+    public function index($group)
+    {
+        \Debugbar::info("★:{$group}");
         
-        return view('comment.show', ['receiveComments' => $receiveComments, 'user' => $user] );    
+        $receiveComments = Comment::all();
+        $user = Auth::user();
+        Group::find($group)->users()->save($user);
+        
+        return view('comment.index', ['receiveComments' => $receiveComments, 'user' => $user->name, 'group' => $group] );    
+        
     }
-    
+  
     public function create(Request $request)
     {
         //Varidation
@@ -34,7 +38,7 @@ class CommentController extends Controller
         $sendComment->fill($form)->save();
         
       
-        return redirect('comment/show');
+        return redirect('groups/show');
     }
     
 }
