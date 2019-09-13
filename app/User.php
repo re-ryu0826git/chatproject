@@ -39,7 +39,7 @@ class User extends Authenticatable
     
     public function groups()
     {
-        return $this->belongsToMany('App\Group');
+        return $this->belongsToMany('App\Group')->withTimestamps();
     }
     
     public function comments()

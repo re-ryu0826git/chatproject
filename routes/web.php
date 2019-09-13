@@ -16,28 +16,19 @@
 // });
 
 Auth::routes();
-Route::resource('groups.comments', 'CommentController')->middleware('auth');
-// Route::resource('groups', 'GroupController')->middleware('auth');
+
+//グループ一覧画面
 Route::get('/','GroupController@index')->middleware('auth');
+
+//グループ新規作成画面
 Route::get('groups/create', 'GroupController@add')->middleware('auth');
 Route::post('groups/create', 'GroupController@create')->middleware('auth');
 
+//グループチャット画面
+Route::get('groups/{group_id}/comments', 'CommentController@index')->middleware('auth');
 
-// Route::resource('groups.comments', 'CommentController')->middleware('auth');
-// Route::resource('comments', 'CommentController')->middleware('auth');
+//グループチャット投稿
+Route::post('groups/{group_id}/comments/create', 'CommentController@create')->middleware('auth');
 
-
-
-// Route::get('comment/show/{id}', ['as' => 'comment.show', 'uses' => 'CommentController@show'])->middleware('auth');
-// Route::get('comment/show/{id}', 'CommentController@show')->middleware('auth');
-// Route::post('comment/{id}', 'CommentController@create')->middleware('auth');
-// Route::get('/home', 'HomeController@index')->name('home');
-
-
-// Route::get('comment/show/{id}', 'CommentController@show')
-//      ->where(['id' => '[0-9]+'])->middleware('auth');
-
-// Route::post('comment/show/{id}', 'CommentController@create')
-//      ->where(['id' => '[0-9]+'])->middleware('auth');
 
 

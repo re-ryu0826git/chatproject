@@ -15,7 +15,7 @@ class Group extends Model
     //Useモデルに関連付け
     public function users()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User')->withTimestamps();
     }
     
     //Commentモデルに関連付け

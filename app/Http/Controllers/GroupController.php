@@ -7,27 +7,26 @@ use Illuminate\Support\Facades\Auth;
 use App\Group;
 use App\Comment;
 
-
 class GroupController extends Controller
 {
-
+  // グループ一覧
   public function index()
   {
     $groups = Group::all();
-    
     return view('group.index', ['groups' => $groups] );
   }
-    
+  
+  //グループ新規追加  
   public function add()
   {
     return view('group.create');
   }
 
+  //グループ新規作成して保存
   public function create(Request $request)
   {
     //Varidation
     $this->validate($request, Group::$rules);
-    
     $group = new Group;
     $form = $request->all();
     

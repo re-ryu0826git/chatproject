@@ -8,37 +8,39 @@ use App\User;
 
 class CommentController extends Controller
 {
-    public function index($group)
+    //それぞれのチャット投稿画面 $group_idはURから抽出
+    public function index($group_id)
     {
-        \Debugbar::info("★:{$group}");
+        $group = Group::find($group_id);
         
-        $receiveComments = Comment::all();
         $user = Auth::user();
-        Group::find($group)->users()->save($user);
         
-        return view('comment.index', ['receiveComments' => $receiveComments, 'user' => $user->name, 'group' => $group] );    
+        $receiveComments = $group->comments()->get();
+           
+        return view('comment.index', ['receiveComments' => $receiveComments, 'user' => $user->id, 'group_id' => $group_id] );    
         
     }
   
-    public function create(Request $request)
+    //チャット投稿画面で投稿した内容を保存
+    public function create(Request $request,$group_id)
     {
         //Varidation
         $this->validate($request, Comment::$rules);
         
         $sendComment = new Comment;
-        
-        $user = Auth::user();
+        $user = Auth::user()->id;
         $form = $request->all();
         
-        unset($form['_token']);
-        
-        
+        Group::find($group_id)->users()->attach($user);
         
         // データベースに保存
+        unset($form['_token']);
         $sendComment->fill($form)->save();
         
-      
-        return redirect('groups/show');
+        return redirect()->action('CommentController@index', ['id' => $group_id]);
+        
     }
     
 }
+
+
