@@ -7,18 +7,20 @@
         <div class="row">
             <h2>チャット投稿</h2>
         </div>
-        
+
         <div class="card">
             <div class="card-header">
-                <h5>動物</h5>
-                <h7>Member : １猫,にー</h7>
+                <h5>{{ $group->name }}</h5>
+                @foreach($group->users as $user)
+                <h7>Member:{{ $user->name }}</h7>
+                @endforeach
             </div>
             
             <!-- chatbody -->
             <div class="card-body chatbody">
-                @foreach($receiveComments as $receiveComment)
+                @foreach($group->comments as $comment)
                     {{-- ログインID と コメントIDが等しいとき右側にコメントを表示 --}}
-                    @if ($receiveComment->user_id == Auth::user()->id)
+                    @if ($comment->user_id == Auth::user()->id)
                         <!--右からの吹き出し-->
                         <div class="balloon think">
                          <figure class="balloon-image-right">
@@ -29,7 +31,7 @@
                          </figure>
                          <div class="balloon-text-left">
                            <p>
-                            {{ $receiveComment->comment }}
+                            {{ $comment->comment }}
                            </p>
                          </div>
                        </div>
@@ -40,11 +42,12 @@
                            <i class="fas fa-user fa-3x fa-border"></i>
                          <figcaption class="balloon-image-description">
                              <!--他のユーザ名前にする必要がある-->
+                             {{ $comment->user->name }}
                          </figcaption>
                          </figure>
                          <div class="balloon-text-right">
                            <p>
-                             {{ $receiveComment->comment }}
+                             {{ $comment->comment }}
                            </p>
                          </div>
                         </div>
@@ -53,7 +56,7 @@
             </div>
             
             <div class="card-footer">
-                <form action="{{ action('CommentController@create',$group_id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ action('CommentController@create',$group->id) }}" method="post" enctype="multipart/form-data">
                     @if (count($errors) > 0)
                         <ul>
                             @foreach($errors->all() as $e)
@@ -70,7 +73,7 @@
                         <div class="col-md-2">
                             {{ csrf_field() }}
                             <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                            <input type="hidden" name="group_id" value="{{ $group_id }}">
+                            <input type="hidden" name="group_id" value="{{ $group->id }}">
                             <input type="submit" class="btn btn-info" value="Send">
                         </div>
                     </div>

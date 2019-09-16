@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Group;
 use App\Comment;
+use App\User;
 
 class GroupController extends Controller
 {
@@ -38,16 +39,22 @@ class GroupController extends Controller
     return redirect('groups/create');
   }
   
-
+  // チャット詳細画面
   public function show(Request $request, $id)
   {   
-      \Debugbar::info($request);
-      $receiveComments = Comment::all();
-      $user = Auth::user()->name;
+      $group = Group::find($id);
+      $user = Auth::id();
       
-      return view('group.show', ['receiveComments' => $receiveComments, 'user' => $user] );    
+      // 中間テーブルに重複されているレコードが保存されているかチェックする変数check
+      $check = $group->users()->where('user_id',$user)->first();
+      
+      if (empty($check)) {
+        // 中間テーブルへ保存 users() 必ずusersの後に()をつける
+        // レコードがない場合のみ保存
+        $group->users()->attach($user);
+      }
+      
+      return view('group.show', ['group' => $group] );    
   }
-
-
 }
 

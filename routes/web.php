@@ -24,8 +24,10 @@ Route::get('/','GroupController@index')->middleware('auth');
 Route::get('groups/create', 'GroupController@add')->middleware('auth');
 Route::post('groups/create', 'GroupController@create')->middleware('auth');
 
-//グループチャット画面
-Route::get('groups/{group_id}/comments', 'CommentController@index')->middleware('auth');
+//グループチャット詳細画面
+// 詳細画面と投稿画面は同じViewの内容を使用
+Route::get('groups/{group_id}/', 'GroupController@show')->middleware('auth');
+
 
 //グループチャット投稿
 Route::post('groups/{group_id}/comments/create', 'CommentController@create')->middleware('auth');

@@ -15,13 +15,13 @@ class Comment extends Model
     //Userモデルに関連付け
     public function user()
     {
-        return $this->belongTo('App\User');
+        return $this->belongsTo('App\User');
     }
     
     //Groupモデルに関連付け
     public function group()
     {
-        return $this->belongTo('App\Group');
+        return $this->belongsTo('App\Group');
     }
     
 }
