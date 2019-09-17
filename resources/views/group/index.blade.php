@@ -21,22 +21,24 @@
               </thead>
               <tbody>
                 @foreach($groups as $group)
-                  <tr>
-                    <th scope="row">{{ $group->id }}</th>
-                        <td>{{ $group->name }}</td>
-                        <td>
-                          <div>
-                            {{-- GroupController show チャット投稿画面へ  --}}
-                            <a href="{{ url('groups/'.$group->id)}}">チャット画面へ</a>
-                          </div>
-                        </td>
-                        <td>2019/08/09 12:49</td>
-                        <td>
-                          <div>
-                            <a href="#">Exit</a>
-                          </div>
-                        </td>
-                    </tr>
+                    <tr>
+                      <th scope="row">{{ $group->id }}</th>
+                          <td>{{ $group->name }}</td>
+                          <td>
+                            <div>
+                              {{-- GroupController show チャット投稿画面へ  --}}
+                              <a href="{{ url('groups/'.$group->id)}}">チャット画面へ</a>
+                            </div>
+                          </td>
+                          @foreach($group->comments as $commentTime)
+                          <td>{{ $commentTime->created_at }}</td>
+                          @endforeach
+                          <td>
+                            <div>
+                              <a href="#">Exit</a>
+                            </div>
+                          </td>
+                      </tr>
                 @endforeach
               </tbody>
             </table>

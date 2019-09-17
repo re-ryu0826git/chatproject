@@ -14,6 +14,10 @@ class GroupController extends Controller
   public function index()
   {
     $groups = Group::all();
+    
+    // $commentTimes = $groups->comments->sortByDesc('created_at')->first(); 
+    // \Debugbar::info('★'.$commentTimes);
+    
     return view('group.index', ['groups' => $groups] );
   }
   
