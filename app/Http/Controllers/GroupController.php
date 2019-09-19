@@ -15,9 +15,6 @@ class GroupController extends Controller
   {
     $groups = Group::all();
     
-    // $commentTimes = $groups->comments->sortByDesc('created_at')->first(); 
-    // \Debugbar::info('★'.$commentTimes);
-    
     return view('group.index', ['groups' => $groups] );
   }
   
@@ -60,5 +57,24 @@ class GroupController extends Controller
       
       return view('group.show', ['group' => $group] );    
   }
+  
+  //グループチャットからExit
+  public function delete(Request $request, $id)
+  {
+      $group = Group::find($id);
+      $user = Auth::id();
+      
+      // 中間テーブルに重複されているレコードが保存されているかチェックする変数check
+      $check = $group->users()->where('user_id',$user)->first();
+      
+      if (empty($check) != true) {
+        // 中間テーブルへ保存 users() 必ずusersの後に()をつける
+        // レコードがある場合のみ削除
+        $group->users()->detach($user);
+      }
+      
+      return redirect('/');
+  }
+  
 }
 

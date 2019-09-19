@@ -30,12 +30,11 @@
                               <a href="{{ url('groups/'.$group->id)}}">チャット画面へ</a>
                             </div>
                           </td>
-                          @foreach($group->comments as $commentTime)
-                          <td>{{ $commentTime->created_at }}</td>
-                          @endforeach
+                          <!--created_at キーを指定してvalueを返す-->
+                          <td>{{ $group->comments->last()['created_at'] }}</td>
                           <td>
                             <div>
-                              <a href="#">Exit</a>
+                              <a href="{{ url('groups/'.$group->id.'/delete') }}">Exit</a>
                             </div>
                           </td>
                       </tr>
@@ -45,3 +44,9 @@
         </div>
     </div>
 @endsection
+
+
+
+
+
+
