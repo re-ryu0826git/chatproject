@@ -16,7 +16,6 @@ class CommentController extends Controller
         $sendComment = new Comment;
         $form = $request->all();
         
-        \Debugbar::info($form);
         // データベースに保存
         unset($form['_token']);
         $sendComment->fill($form)->save();
