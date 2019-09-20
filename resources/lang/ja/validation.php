@@ -147,7 +147,12 @@ return [
 
     'attributes' => [
         'name' => '名前',
-        'comment' => 'コメント'
+        'comment' => 'コメント',
+        'Login' => 'ログイン',
+        'E-Mail Address' => 'メールアドレス',
+        'Password' => 'パスワード',
+        'Confirm Password' => '確認用パスワード',
+        'Register' => '登録する'
     ],
 
 ];
