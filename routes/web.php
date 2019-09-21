@@ -14,7 +14,6 @@
 Auth::routes();
 
 //グループ一覧画面
-Route::get('/home','GroupController@index')->middleware('auth');
 Route::get('/','GroupController@index')->middleware('auth');
 
 //グループ新規作成画面

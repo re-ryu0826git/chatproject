@@ -41,8 +41,8 @@ h5 {
 }
 
 .balloon {
-margin-bottom: 2em;
-position: relative;
+  margin-bottom: 2em;
+  position: relative;
 
   &:before {
    clear: both;
@@ -72,48 +72,48 @@ position: relative;
 }
 
 .balloon-image-left {
-float: left;
-margin-right: 20px;
+  float: left;
+  margin-right: 20px;
 }
 
 .balloon-image-right {
-float: right;
-margin-left: 20px;
+  float: right;
+  margin-left: 20px;
 }
 
 .balloon-image-description {
-padding: 5px 0 0;
-font-size: 10px;
-text-align: center;
+  padding: 5px 0 0;
+  font-size: 10px;
+  text-align: center;
 }
 
 .balloon-text-right,.balloon-text-left {
-position: relative;
-padding: 10px;
-border: 1px solid;
-border-radius: 10px;
-max-width: -webkit-calc(100% - 120px);
-max-width: calc(100% - 120px);
-display: inline-block;
+  position: relative;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 10px;
+  max-width: -webkit-calc(100% - 120px);
+  max-width: calc(100% - 120px);
+  display: inline-block;
 }
 
 .balloon-text-right {
-border-color: #aaa;
-float: left;
+  border-color: #aaa;
+  float: left;
 }
 
 
 /* 右からの吹き出しテキスト */
 .balloon-image-description-right {
-padding: 5px 0 0;
-font-size: 10px;
-text-align: center;
-color: #0000cd;
+  padding: 5px 0 0;
+  font-size: 10px;
+  text-align: center;
+  color: #0000cd;
 }
 
 .balloon-text-left {
- background-color: #87CEFA;
- float: right;
+  background-color: #87CEFA;
+  float: right;
 }
 .balloon-text-left:after {
   position: absolute;
@@ -123,17 +123,12 @@ color: #0000cd;
   top: 15px;
   right: -19px;
 }
-// .balloon-text-right {
-// float: left;
-// }
-// .balloon-text-left {
-// float: right;
-// }
+
 .balloon p {
-margin: 0 0 20px;
+  margin: 0 0 20px;
 }
 .balloon p:last-child {
-margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 /* 三角部分 */
@@ -176,7 +171,7 @@ margin-bottom: 0;
 
 // 考え
 .think .balloon-text-right,.think .balloon-text-left {
- border-radius: 30px;
+  border-radius: 30px;
 }
 
 .think .balloon-text-right {
@@ -220,4 +215,6 @@ margin-bottom: 0;
 
 
 // 投稿者のアイコン 
-.my-skyblue {color: skyblue}
+.my-skyblue {
+  color: skyblue
+}
