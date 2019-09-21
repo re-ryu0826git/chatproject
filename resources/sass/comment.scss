@@ -1,6 +1,41 @@
-/*--------------------
- 吹き出しを作る
---------------------*/
+body {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+  color: #000;
+  font-family: "Gill Sans", sans-serif;
+}
+
+h5 {
+  position: relative;
+  padding-left: 25px;
+
+  &:before{
+   position: absolute;
+   content: '';
+   bottom: -3px;
+   left: 0;
+   width: 0;
+   height: 0;
+   border: none;
+   border-left: solid 15px transparent;
+   border-bottom: solid 15px rgb(119, 195, 223);
+ }
+ 
+  &:after{
+   position: absolute;
+   content: '';
+   bottom: -3px;
+   left: 10px;
+   width: 100%;
+   border-bottom: solid 3px rgb(119, 195, 223);
+  }
+
+}
+
+
+
+// 吹き出し
 .chatbody {
   margin: 10px 10px;
 }
@@ -8,36 +43,50 @@
 .balloon {
 margin-bottom: 2em;
 position: relative;
+
+  &:before {
+   clear: both;
+   content: "";
+   display: block;
+  }
+  
+  &:after {
+   clear: both;
+   content: "";
+   display: block;
+  }
+  
+  figure {
+   width: 60px;
+   height: 60px;   
+   
+    img {
+      width: 100%;
+      height: 100%;
+      border: 1px solid #aaa;
+      border-radius: 50%;
+      margin: 0;
+    }
+    
+  }
 }
-.balloon:before,.balloon:after {
-clear: both;
-content: "";
-display: block;
-}
-.balloon figure {
-width: 60px;
-height: 60px;
-}
+
 .balloon-image-left {
 float: left;
 margin-right: 20px;
 }
+
 .balloon-image-right {
 float: right;
 margin-left: 20px;
 }
-.balloon figure img {
-width: 100%;
-height: 100%;
-border: 1px solid #aaa;
-border-radius: 50%;
-margin: 0;
-}
+
 .balloon-image-description {
 padding: 5px 0 0;
 font-size: 10px;
 text-align: center;
 }
+
 .balloon-text-right,.balloon-text-left {
 position: relative;
 padding: 10px;
@@ -47,14 +96,24 @@ max-width: -webkit-calc(100% - 120px);
 max-width: calc(100% - 120px);
 display: inline-block;
 }
+
 .balloon-text-right {
 border-color: #aaa;
+float: left;
 }
 
 
 /* 右からの吹き出しテキスト */
+.balloon-image-description-right {
+padding: 5px 0 0;
+font-size: 10px;
+text-align: center;
+color: #0000cd;
+}
+
 .balloon-text-left {
- background-color: #00da00;
+ background-color: #87CEFA;
+ float: right;
 }
 .balloon-text-left:after {
   position: absolute;
@@ -64,85 +123,101 @@ border-color: #aaa;
   top: 15px;
   right: -19px;
 }
-.balloon-text-right {
-float: left;
-}
-.balloon-text-left {
-float: right;
-}
+// .balloon-text-right {
+// float: left;
+// }
+// .balloon-text-left {
+// float: right;
+// }
 .balloon p {
 margin: 0 0 20px;
 }
 .balloon p:last-child {
 margin-bottom: 0;
 }
+
 /* 三角部分 */
-.balloon-text-right:before {
-position: absolute;
-content: '';
-border: 10px solid transparent;
-border-right: 10px solid #aaa;
-top: 15px;
-left: -20px;
-}
-.balloon-text-right:after {
-position: absolute;
-content: '';
-border: 10px solid transparent;
-border-right: 10px solid #fff;
-top: 15px;
-left: -19px;
-}
-.balloon-text-left:before {
-position: absolute;
-content: '';
-border: 10px solid transparent;
-border-left: 10px solid #aaa;
-top: 15px;
-right: -20px;
-}
-.balloon-text-left:after {
-position: absolute;
-content: '';
-border: 10px solid transparent;
-border-left: 10px solid #fff;
-top: 15px;
-right: -19px;
+.balloon-text-right {
+ &:before {
+   position: absolute;
+   content: '';
+   border: 10px solid transparent;
+   border-right: 10px solid #aaa;
+   top: 15px;
+   left: -20px;
+ }&:after {
+   position: absolute;
+   content: '';
+   border: 10px solid transparent;
+   border-right: 10px solid #fff;
+   top: 15px;
+   left: -19px;
+ }
 }
 
-/* 考え毎 */
+.balloon-text-left {
+ &:before {
+   position: absolute;
+   content: '';
+   border: 10px solid transparent;
+   border-left: 10px solid #aaa;
+   top: 15px;
+   right: -20px;
+  }
+ &:after {
+  position: absolute;
+  content: '';
+  border: 10px solid transparent;
+  border-left: 10px solid #fff;
+  top: 15px;
+  right: -19px;
+ }
+}
+
+// 考え
 .think .balloon-text-right,.think .balloon-text-left {
  border-radius: 30px;
 }
-.think .balloon-text-right:before {
- border: 1px solid #aaa;
- border-radius: 50%;
- width: 8px;
- height: 8px;
- top: 15px;
- left: -12px;
+
+.think .balloon-text-right {
+  &:before {
+    border: 1px solid #aaa;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    top: 15px;
+    left: -12px;
+  }
+  &:after {
+   border: 1px solid #aaa;
+   border-radius: 50%;
+   width: 4px;
+   height: 4px;
+   top: 20px;
+   left: -19px;
+  }
 }
-.think .balloon-text-right:after {
- border: 1px solid #aaa;
- border-radius: 50%;
- width: 4px;
- height: 4px;
- top: 20px;
- left: -19px;
+
+
+.think .balloon-text-left {
+ &:before {
+   border: 1px solid #aaa;
+   border-radius: 50%;
+   width: 8px;
+   height: 8px;
+   top: 15px;
+   right: -12px;
+ }
+ &:after {
+   border: 1px solid #aaa;
+   border-radius: 50%;
+   width: 4px;
+   height: 4px;
+   top: 20px;
+   right: -19px;
+ }
 }
-.think .balloon-text-left:before {
- border: 1px solid #aaa;
- border-radius: 50%;
- width: 8px;
- height: 8px;
- top: 15px;
- right: -12px;
-}
-.think .balloon-text-left:after {
- border: 1px solid #aaa;
- border-radius: 50%;
- width: 4px;
- height: 4px;
- top: 20px;
- right: -19px;
-}
+
+
+// 投稿者のアイコン 
+.my-skyblue {color: skyblue}

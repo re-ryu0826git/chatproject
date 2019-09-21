@@ -11,8 +11,9 @@
         <div class="card">
             <div class="card-header">
                 <h5>{{ $group->name }}</h5>
+                <label>メンバー:</label>
                 @foreach($group->users as $user)
-                <h7>Member:{{ $user->name }}</h7>
+                <h7>{{ $user->name }}</h7>
                 @endforeach
             </div>
             
@@ -23,18 +24,16 @@
                     @if ($comment->user_id == Auth::user()->id)
                         <!--右からの吹き出し-->
                         <div class="balloon think">
-                         <figure class="balloon-image-right">
-                           <i class="fas fa-user fa-3x fa-border"></i>
-                         <figcaption class="balloon-image-description">
-                             {{ Auth::user()->name }}
-                         </figcaption>
-                         </figure>
-                         <div class="balloon-text-left">
-                           <p>
-                            {{ $comment->comment }}
-                           </p>
-                         </div>
-                       </div>
+                            <figure class="balloon-image-right">
+                                <i class="fas fa-user my-skyblue fa-3x fa-border"></i>
+                            <figcaption class="balloon-image-description-right">
+                                {{ Auth::user()->name }}
+                            </figcaption>
+                            </figure>
+                            <div class="balloon-text-left">
+                                <p>{{ $comment->comment }}</p>
+                            </div>
+                        </div>
                     @else
                         <!--左からの吹き出し-->
                         <div class="balloon think">

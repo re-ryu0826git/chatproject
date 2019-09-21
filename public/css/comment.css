@@ -1,8 +1,38 @@
 @charset "UTF-8";
 
-/*--------------------
- 吹き出しを作る
---------------------*/
+body {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+  color: #000;
+  font-family: "Gill Sans", sans-serif;
+}
+
+h5 {
+  position: relative;
+  padding-left: 25px;
+}
+
+h5:before {
+  position: absolute;
+  content: "";
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border: none;
+  border-left: solid 15px transparent;
+  border-bottom: solid 15px #77c3df;
+}
+
+h5:after {
+  position: absolute;
+  content: "";
+  bottom: -3px;
+  left: 10px;
+  width: 100%;
+  border-bottom: solid 3px #77c3df;
+}
 
 .chatbody {
   margin: 10px 10px;
@@ -13,7 +43,12 @@
   position: relative;
 }
 
-.balloon:before,
+.balloon:before {
+  clear: both;
+  content: "";
+  display: block;
+}
+
 .balloon:after {
   clear: both;
   content: "";
@@ -25,6 +60,14 @@
   height: 60px;
 }
 
+.balloon figure img {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #aaa;
+  border-radius: 50%;
+  margin: 0;
+}
+
 .balloon-image-left {
   float: left;
   margin-right: 20px;
@@ -33,14 +76,6 @@
 .balloon-image-right {
   float: right;
   margin-left: 20px;
-}
-
-.balloon figure img {
-  width: 100%;
-  height: 100%;
-  border: 1px solid #aaa;
-  border-radius: 50%;
-  margin: 0;
 }
 
 .balloon-image-description {
@@ -61,12 +96,21 @@
 
 .balloon-text-right {
   border-color: #aaa;
+  float: left;
 }
 
 /* 右からの吹き出しテキスト */
 
+.balloon-image-description-right {
+  padding: 5px 0 0;
+  font-size: 10px;
+  text-align: center;
+  color: #0000cd;
+}
+
 .balloon-text-left {
-  background-color: #00da00;
+  background-color: #87CEFA;
+  float: right;
 }
 
 .balloon-text-left:after {
@@ -76,14 +120,6 @@
   border-left: 10px solid #00da00;
   top: 15px;
   right: -19px;
-}
-
-.balloon-text-right {
-  float: left;
-}
-
-.balloon-text-left {
-  float: right;
 }
 
 .balloon p {
@@ -132,8 +168,6 @@
   right: -19px;
 }
 
-/* 考え毎 */
-
 .think .balloon-text-right,
 .think .balloon-text-left {
   border-radius: 30px;
@@ -173,5 +207,9 @@
   height: 4px;
   top: 20px;
   right: -19px;
+}
+
+.my-skyblue {
+  color: skyblue;
 }
 
