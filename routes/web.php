@@ -13,18 +13,6 @@
 
 Auth::routes();
 
-// //ユーザー登録
-// Route::get('/register', 'Auth\RegisterController@showRegistrationForm');
-// Route::post('/register', 'Auth\RegisterController@register');
-
-// // ユーザーログイン
-// Route::get('/login', 'Auth\LoginController@showLoginForm');
-// Route::post('/login', 'Auth\LoginController@login');
-
-// //ログアウト
-// Route::get('/logout', 'Auth\LoginController@logout')->middleware('auth');
-
-
 //グループ一覧画面
 Route::get('/','GroupController@index')->middleware('auth');
 

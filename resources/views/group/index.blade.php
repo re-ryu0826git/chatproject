@@ -20,9 +20,12 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach($groups as $group)
+                @foreach($groups as $group) 
                     <tr>
-                      <th scope="row">{{ $group->id }}</th>
+                      @if (empty($group))
+                        <p>グループはまだ作成されていません</p>
+                      @else
+                        <th scope="row">{{ $group->id }}</th>
                           <td class = "group_title">{{ $group->name }}</td>
                           <td>
                             <div>
@@ -31,13 +34,18 @@
                             </div>
                           </td>
                           <!--created_at キーを指定してvalueを返す-->
-                          <td>{{ $group->comments->last()['created_at']->format('Y年m月d日 H時i分') }}</td>
+                          @if (empty($group->comments->last()['created_at']))
+                            <td>コメントの投稿はまだありません</td>
+                          @else
+                            <td>{{ $group->comments->last()['created_at']->format('Y年m月d日 H時i分') }}</td>
+                          @endif
                           <td>
                             <div>
                               <a class="btn btn-secondary" href="{{ url('groups/'.$group->id.'/delete') }}" role="button">Exit</a>
                             </div>
                           </td>
-                      </tr>
+                      @endif
+                    </tr>
                 @endforeach
               </tbody>
             </table>
