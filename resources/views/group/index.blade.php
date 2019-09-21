@@ -15,26 +15,26 @@
                   <th scope="col">id</th>
                   <th scope="col">チャットグループ名</th>
                   <th scope="col">詳細</th>
-                  <th scope="col">Last Comment</th>
-                  <th scope="col">Leave one's group</th>
+                  <th scope="col">Last Comment Time</th>
+                  <th scope="col">Leave the group</th>
                 </tr>
               </thead>
               <tbody>
                 @foreach($groups as $group)
                     <tr>
                       <th scope="row">{{ $group->id }}</th>
-                          <td>{{ $group->name }}</td>
+                          <td class = "group_title">{{ $group->name }}</td>
                           <td>
                             <div>
                               {{-- GroupController show チャット投稿画面へ  --}}
-                              <a href="{{ url('groups/'.$group->id)}}">チャット画面へ</a>
+                              <a class="btn btn-success" href="{{ url('groups/'.$group->id)}}" role="button">チャット画面へ</a>
                             </div>
                           </td>
                           <!--created_at キーを指定してvalueを返す-->
-                          <td>{{ $group->comments->last()['created_at'] }}</td>
+                          <td>{{ $group->comments->last()['created_at']->format('Y年m月d日 H時i分') }}</td>
                           <td>
                             <div>
-                              <a href="{{ url('groups/'.$group->id.'/delete') }}">Exit</a>
+                              <a class="btn btn-secondary" href="{{ url('groups/'.$group->id.'/delete') }}" role="button">Exit</a>
                             </div>
                           </td>
                       </tr>

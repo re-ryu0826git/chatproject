@@ -3,5 +3,12 @@ body {
   background-position: center;
   background-color: #fff;
   color: #000;
+  font-family: "Gill Sans", sans-serif;
+}
+
+table th,
+table td {
+  text-align: left;
+  padding: 15px 0;
 }
 
