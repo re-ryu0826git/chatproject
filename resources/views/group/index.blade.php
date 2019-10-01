@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
             <h2>チャット一覧</h2>
-            <table class="table table-striped">
+            <table class="table table-striped table-hover">
               <thead>
                 <tr>
                   <th scope="col">id</th>

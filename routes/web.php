@@ -13,8 +13,11 @@
 
 Auth::routes();
 
+//トップページ アプリ説明
+Route::get('/','GroupController@top');
+
 //グループ一覧画面
-Route::get('/','GroupController@index')->middleware('auth');
+Route::get('/groups','GroupController@index')->middleware('auth');
 
 //グループ新規作成画面
 Route::get('groups/create', 'GroupController@add')->middleware('auth');

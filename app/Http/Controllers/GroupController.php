@@ -10,6 +10,12 @@ use App\User;
 
 class GroupController extends Controller
 {
+  //トップページ アプリ説明
+  public function top()
+  {
+    return view('group.top');
+  }
+  
   // グループ一覧
   public function index()
   {
