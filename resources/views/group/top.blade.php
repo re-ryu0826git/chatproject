@@ -3,11 +3,10 @@
 @section('title', 'Chatアプリトップページ')
 
 @section('content')
-    <h1>chatアプリについて</h1>
     <div class="container">
         <div class="card">
             <div class="card-header">
-                chatアプリガイド
+                <h2>chatアプリガイド</h2>
             </div>
             <div class="card-body">
                 <article>
@@ -38,10 +37,11 @@
                             <figcaption>⑥グループから抜けたい時は「グループ一覧」から「Exit」ボタンをクリックする。</figcaption>
                         </figure>
                     </section>
-                    <h4>よかったら是非使ってみてください。</h4>
                 </article>
+                <div class="ribbon">
+                    <h4>よかったら是非使ってみてください。</h4>
+                </div>
             </div>
         </div>
     </div>
-    
 @endsection 

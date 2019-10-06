@@ -20,6 +20,7 @@
                 </tr>
               </thead>
               <tbody>
+                <!--{{ var_dump($groups) }}-->
                 @foreach($groups as $group) 
                     <tr>
                       @if (empty($group))

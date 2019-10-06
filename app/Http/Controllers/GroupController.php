@@ -21,7 +21,8 @@ class GroupController extends Controller
   {
     $groups = Group::all();
     
-    return view('group.index', ['groups' => $groups] );
+    // return view('group.index', ['groups' => $groups] );
+    return view('group.index', compact('groups'));
   }
   
   //グループ新規追加  
