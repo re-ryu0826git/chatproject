@@ -80,7 +80,7 @@ class GroupController extends Controller
         $group->users()->detach($user);
       }
       
-      return redirect('/');
+      return redirect('groups');
   }
   
 }
